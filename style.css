@@ -320,8 +320,8 @@ body {
     }
 
     .project-card {
-        flex: 0 0 85px; /* Smaller cards for mobile screens */
-        margin-right: 15px
+        flex: 0 0 10px; /* Smaller cards for mobile screens */
+        margin-right: 30px
         scroll-snap-align: center; /* Snaps the card to the middle when they swipe */
     }
 }
