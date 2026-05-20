@@ -306,6 +306,12 @@ body {
         width: 280px;
         height: 280px;
         margin-top: 30px;
+        display: flex;
+        overflow-x: auto;
+        padding-left: 20px; /* Gives the first card some breathing room */
+        padding-right: 20px;
+        scroll-snap-type: x mandatory; /* Makes swiping feel smooth */
+        -webkit-overflow-scrolling: touch; /* Makes it smooth on iPhones */
     }
 
     .about-box {
@@ -314,7 +320,9 @@ body {
     }
 
     .project-card {
-        flex: 0 0 280px; /* Smaller cards for mobile screens */
+        flex: 0 0 85px; /* Smaller cards for mobile screens */
+        margin-right: 15px
+        scroll-snap-align: center; /* Snaps the card to the middle when they swipe */
     }
 }
 
