@@ -1,0 +1,359 @@
+/* --- GLOBAL RESET --- */
+* {
+    margin: 0; /* Removes default gaps */
+    padding: 0; /* Removes default internal spacing */
+    box-sizing: border-box; /* Prevents padding from breaking layout width */
+    text-decoration: none; /* Globally removes underlines from all links */
+}
+
+/* Fixes the "Purple Link" issue - forces links to use the color we tell them */
+a {
+    color: inherit; 
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth sliding when clicking nav links */
+}
+
+body {
+    background-color: black;
+    color: white;
+    overflow-x: hidden; /* Prevents the site from shaking left-to-right */
+    font-family: 'Poppins', sans-serif; /* Clean modern body font */
+}
+
+/* --- BACKGROUND --- */
+#particles-js {
+    position: fixed; /* Particles stay in the background while you scroll */
+    width: 100%;
+    height: 100vh;
+    z-index: -1; /* Puts it behind everything */
+    top: 0;
+    left: 0;
+}
+
+/* --- NAVIGATION (Glassmorphism) --- */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(9, 0, 23, 0.8);
+    padding: 10px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.logo {
+    width: 60px;
+    filter: drop-shadow(0 0 10px rgba(0, 150, 255, 0.8)); /* Neon glow */
+}
+
+.navlinks {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-item {
+    position: relative; /* Needed for the ::after line to position correctly */
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+
+.nav-item:hover {
+    color: #00d4ff; /* Turns blue on hover */
+}
+
+/* THE SLIDING LINE (Restored) */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: linear-gradient(to right, #00d4ff, #ffffff); /* Your original colors */
+    transform: scaleX(0); /* Hidden by default */
+    transform-origin: bottom right;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* HOVER & ACTIVE STATE */
+.nav-item:hover::after,
+.nav-item.active::after {
+    transform: scaleX(1); /* Shows the line */
+    transform-origin: bottom left;
+}
+
+
+/* --- THE HAMBURGER (Mobile Only) --- */
+.menu-btn {
+    display: none; /* Hidden on Desktop */
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#click {
+    display: none; /* Hidden checkbox for logic */
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    display: flex;
+    flex-direction: row; /* Side by side on desktop */
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 100px 10%;
+    min-height: 90vh;
+}
+
+.name {
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(to right, #00d4ff, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3.5rem;
+    font-weight: 800;
+}
+
+.profile-container {
+    width: 350px;
+    height: 350px;
+    clip-path: polygon(30% 0%, 100% 10%, 100% 75%, 65% 100%, 0% 85%, 0% 25%);
+    background: #000;
+    overflow: hidden;
+}
+
+.profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- ABOUT BOX (Glassmorphism) --- */
+.about-box {
+    display: flex;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.05); /* Very transparent white */
+    backdrop-filter: blur(15px); /* Frosted glass */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+}
+
+/* --- SKILLS --- */
+.section-title{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.skill-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.skill-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    width: 220px;
+    border-radius: 20px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    border-color: #00d4ff;
+}
+
+/* --- PROJECTS (Horizontal Scroll Restored) --- */
+.projects-section {
+    padding: 80px 10%;
+}
+
+.projects-container {
+    display: flex; /* Keeps items in a row */
+    gap: 30px;
+    padding: 20px 0;
+    overflow-x: auto; /* Enables side-scrolling */
+    scroll-snap-type: x mandatory; /* Makes it "snap" into place */
+    scrollbar-width: none; /* Hides scrollbar in Firefox */
+}
+
+.projects-container::-webkit-scrollbar {
+   /* Hides scrollbar in Chrome/Safari */
+   display: none;
+}
+
+@media(min-width: 1024px) {
+    .projects-container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        overflow-x:  hidden;
+    }
+    .project-card{
+       width: 30%;
+       min-width: 300px;
+    }
+}
+
+.project-card {
+    flex: 0 0 350px; /* Forces cards to stay 350px wide and not shrink */
+    scroll-snap-align: start;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    border-color: #00d4ff;
+}
+
+.placeholder-img {
+    height: 180px;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.project-info {
+    padding: 20px;
+}
+
+/* --- BUTTONS --- */
+.btn {
+    padding: 10px 20px;
+    background: white;
+    color: black !important; /* Forces text to black, no purple */
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn.secondary {
+    background: transparent;
+    border: 1px solid white;
+    color: white !important;
+}
+
+.btn:hover {
+    background: #00d4ff;
+    color: white !important;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+}
+
+/* --- REVEAL ANIMATION --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block; /* Shows hamburger */
+    }
+
+    .navlinks {
+        position: fixed;
+        top: 70px;
+        left: -100%; /* Hidden off-screen */
+        background: rgba(0, 0, 0, 0.95);
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        transition: 0.4s ease;
+    }
+
+    #click:checked ~ .navlinks {
+        left: 0; /* Slides menu in */
+    }
+
+    .hero-section {
+        flex-direction: column; /* Stacks vertically */
+        text-align: center;
+    }
+
+    .profile-container {
+        width: 280px;
+        height: 280px;
+        margin-top: 30px;
+    }
+
+    .about-box {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .project-card {
+        flex: 0 0 280px; /* Smaller cards for mobile screens */
+    }
+}
+
+/* --- CONTACT CARD (Glassmorphism matched) --- */
+.contact-card {
+    background: rgba(255, 255, 255, 0.05); /* Semi-transparent white */
+    backdrop-filter: blur(15px); /* This creates the "frosted glass" blur */
+    -webkit-backdrop-filter: blur(15px); /* Support for Safari browsers */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle "edge" of the glass */
+    padding: 60px; /* Internal spacing */
+    border-radius: 30px; /* Smooth rounded corners */
+    text-align: center; /* Centers the text inside */
+    max-width: 600px; /* Keeps the card from getting too wide */
+    margin: 0 auto; /* Centers the card horizontally on the page */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Adds depth under the glass */
+    transition: transform 0.3s ease; /* Smooth movement if we want to hover it */
+}
+
+/* Optional: Make it glow slightly when you hover over the contact area */
+.contact-card:hover {
+    border-color: rgba(0, 212, 255, 0.5); /* Blue glow on the border */
+    transform: translateY(-5px); /* Slight lift effect */
+}
+
+/* Ensure the contact links don't have the default purple/blue look */
+.contact-link {
+    display: flex; /* Aligns icon and text */
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between icon and text */
+    margin: 20px 0;
+    color: #00d4ff !important; /* Forces your brand blue */
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.contact-link:hover {
+    color: white !important; /* Turns white when hovered */
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.8); /* Neon glow effect */
+}
