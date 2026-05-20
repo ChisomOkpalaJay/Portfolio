@@ -339,6 +339,11 @@ body {
         padding: 30px;
         margin: 20px;
     }
+
+    .hero-btn{
+        margin-top: 10px;
+        gap: 10px;
+    }
 }
 
 /* --- CONTACT CARD (Glassmorphism matched) --- */
