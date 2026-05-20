@@ -315,6 +315,7 @@ body {
 
     .project-card {
         flex: 0 0 280px; /* Smaller cards for mobile screens */
+        width: 85%;
     }
 }
 
